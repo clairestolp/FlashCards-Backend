@@ -1,0 +1,12 @@
+GET http://localhost:3031/users
+###
+GET http://localhost:3031/
+###
+POST http://localhost:3031/users/
+Content-Type: 'application/json'
+
+{
+  "firstname": "Claire",
+  "lastname": "Stolp",
+  "email": "me@mail.com"
+}
