@@ -16,8 +16,9 @@ db.once("open", () => console.log("connection to db established"));
 app.use(express.json());
 app.use(cors());
 
-const usersRouter = require("./routes/users");
-app.use("/users", usersRouter);
+const routers = require("./routes");
+app.use("/users", routers.usersRouter);
+app.use("/subjects", routers.subjectsRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server has started at ${process.env.PORT}`);

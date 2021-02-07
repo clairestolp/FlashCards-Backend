@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const constants = require("../constants");
 
 // user middleware to find a new user,
 // takes req, and res object and uses
@@ -17,10 +18,10 @@ async function getUser(req, res, next) {
     }
 
     if (user === null) {
-      return res.status(404).json({ message: "Cannot find User" });
+      res.status(404).json({ message: "Cannot find User" });
     }
   } catch (err) {
-    return res.status(500).json({ message: err.mesasge });
+    res.status(500).json({ message: err.mesasge });
   }
   res.user = user;
   next();
@@ -33,7 +34,7 @@ router.get("/", async (req, res) => {
     console.log(users);
     res.json(users);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ status: constants.FAILURE, message: err.message });
   }
 });
 
@@ -60,9 +61,9 @@ router.post("/", async (req, res) => {
   });
   try {
     const newUser = await user.save();
-    res.status(201).json({ newUser });
+    res.status(201).json({ status: constants.SUCCESS, newUser });
   } catch (err) {
-    res.status(400).json({ mssage: err.message });
+    res.status(400).json({ status: constants.FAILURE, mssage: err.message });
   }
 });
 

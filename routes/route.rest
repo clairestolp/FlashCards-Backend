@@ -10,3 +10,15 @@ Content-Type: 'application/json'
   "lastname": "Stolp",
   "email": "me@mail.com"
 }
+
+###
+
+POST http://localhost:3031/users/email/
+Content-Type: 'application/json
+
+{
+  "email": "me@mail.com"
+}
+
+###
+GET http://localhost:3031/subjects/601df007c7b6ab3e781cbe56
