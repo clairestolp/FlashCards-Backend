@@ -7,12 +7,15 @@ const deckSchema = new Schema(
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      defualt: "",
+    },
     lastStudied: {
       type: Date,
     },
     studyConfig: {
       sideOrder: [Number],
-      default: [],
     },
   },
   {
